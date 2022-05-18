@@ -9,20 +9,15 @@ export const userContext = createContext();
 export const AuthProvider = ({ children }) => {
   const [user, setUser] = useState(null);
   const navigate = useNavigate();
-  const { ref } = useContext(locationContext);
+  const { locationRef } = useContext(locationContext);
   useEffect(() => {
     onAuthStateChanged(getAuth(app), (user) => {
       setUser(user);
-      console.log(ref);
-
-      if (ref.current) {
-        navigate(ref.current);
+      if (locationRef.current) {
+        navigate(locationRef.current);
       }
     });
   }, []);
-  useEffect(() => {
-    console.log(user);
-  }, [user]);
 
   return (
     <userContext.Provider value={{ user }}>{children}</userContext.Provider>

@@ -1,4 +1,4 @@
-import { Route, Routes, useLocation } from "react-router-dom";
+import { Route, Routes } from "react-router-dom";
 import "./App.css";
 import Login from "./routes/Login";
 import Home from "./routes/Home";
@@ -6,8 +6,6 @@ import PrivateRoute from "./PrivateRoute";
 import { AuthProvider } from "./context/UserContext";
 import { LocationProvider } from "./context/LocationContext";
 function App() {
-  console.log("app renderd");
-
   return (
     <LocationProvider>
       <AuthProvider>

@@ -5,16 +5,14 @@ export const locationContext = createContext();
 
 export function LocationProvider({ children }) {
   const location = useLocation();
-  const ref = useRef();
+  const locationRef = useRef();
   useEffect(() => {
     const path = location.pathname;
-    if (path !== "/login") ref.current = path;
-
-    console.log(ref.current);
+    if (path !== "/login") locationRef.current = path; //TODO: fix use object
   }, [location]);
 
   return (
-    <locationContext.Provider value={{ pathToReload: ref.current }}>
+    <locationContext.Provider value={{ locationRef }}>
       {children}
     </locationContext.Provider>
   );
